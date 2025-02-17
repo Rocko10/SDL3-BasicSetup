@@ -4,7 +4,8 @@
 
 This example in C++ shows how to render a square in a window.
 
-![Example](/home/nko/Pictures/Screenshots/Screenshot From 2025-02-16 21-08-13.png)
+![Screenshot From 2025-02-16 21-08-13](https://github.com/user-attachments/assets/e19d959b-137a-45d2-84d3-eb8aad543bf7)
+
 
 ## Installation
 
