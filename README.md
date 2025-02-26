@@ -11,6 +11,45 @@ This example in C++ shows how to render a square in a window.
 
 Depending on you system you can install it following the instructions of the [official site](https://github.com/libsdl-org/SDL/blob/main/INSTALL.md)
 
+## Basic code
+```C++
+int main (int argc, char *argv[]) {
+    if (!SDL_Init(SDL_INIT_VIDEO)) {
+        SDL_Log("Error on init application: %s", SDL_GetError());
+
+        return -1;
+    }
+
+    const int WINDOW_WIDTH = 600;
+    const int WINDOW_HEIGHT = 500;
+
+    SDL_Window* window;
+    SDL_Renderer* renderer;
+
+    SDL_CreateWindowAndRenderer("My game", WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_VULKAN, &window, &renderer);
+
+    bool isPlaying = true;
+    SDL_Event event;
+
+    SDL_FRect square = {WINDOW_WIDTH/2.0f, WINDOW_HEIGHT/2.0f, 30, 30};
+
+    while (isPlaying) {
+        while (SDL_PollEvent(&event)) {
+            if (event.type == SDL_EVENT_QUIT) {
+                isPlaying = false;
+            }
+        }
+
+        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+        SDL_RenderClear(renderer);
+
+        SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+        SDL_RenderFillRect(renderer, &square);
+
+        SDL_RenderPresent(renderer);
+    }
+```
+
 ## Compiling
 
 Depending on your compiler, you can do it like:
